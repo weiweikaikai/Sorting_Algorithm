@@ -1,4 +1,4 @@
-//Ã°ÅÝÅÅÐò
+//Êý×éµÄÃ°ÅÝÅÅÐò
 void Bubbsort_Arr(int *arr, int n)
 {
 	if (arr == NULL)
@@ -9,7 +9,7 @@ void Bubbsort_Arr(int *arr, int n)
 	for (int i = 0; i < n - 1 && flag; ++i)
 	{
 		flag = false;
-		for (int j = 0; j < n - 1; ++j)
+		for (int j = 0; j < n - 1-i; ++j)
 		{
 			if (arr[j] > arr[j + 1])
 			{
@@ -92,22 +92,29 @@ void  Bubbsort(Lnode head)
 	{
 		Lnode plow = head;
 		Lnode pfast = head->next;
-		bool flag = true;
+
 		for (; pfast != tail; pfast = pfast->next,plow = plow->next)
 		{
 			if (plow->data > pfast->data)
 			{
 				std::swap(pfast->data, plow->data);
-				flag = false;
 			}
-			if (flag)
-			{
-				return;
-			}
-			
 		}
 		tail = plow;
 	}
 }
 
 
+void test_arr()
+{
+	int arr[10] = { 1, 6, 0, 99, 77, 23, 56, 22, 12, 8 };
+	for (int i = 0; i < 10; ++i)
+	{
+		cout << arr[i] << " ";
+	}
+	Bubbsort_Arr(arr, 0, 9);
+	for (int i = 0; i < 10; ++i)
+	{
+		cout << arr[i] << " ";
+	}
+}
